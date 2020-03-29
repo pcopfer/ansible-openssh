@@ -1,0 +1,10 @@
+---
+- name: Ensure opennssh is intalled
+  pacman:
+    pkg: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - openssh
+  tags:
+    - dehydrated

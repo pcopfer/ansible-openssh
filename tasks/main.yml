@@ -1,13 +1,12 @@
 ---
-- include: packages.yml
-  become: true
+- name: include install tasks
+  include_tasks: install_{{ ansible_distribution|lower }}.yml
+  tags:
+    - ssh
 
 - include: config.yml
-  become: true
 
 - include: keys.yml
   when: openssh_ssh_users is defined
-  become: true
 
 - include: ufw.yml
-  become: true
