@@ -21,3 +21,11 @@
   tags:
     - ufw
     - ssh
+
+- name: ensure ufw is enabled
+  service:
+    name: ufw
+    state: started
+  tags:
+    - ssh
+    - ufw

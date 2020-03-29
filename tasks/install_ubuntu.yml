@@ -6,7 +6,9 @@
   vars:
     packages:      
     - openssh-server
+    - ufw
   tags:
     - apt
     - packages
     - ssh
+    - ufw

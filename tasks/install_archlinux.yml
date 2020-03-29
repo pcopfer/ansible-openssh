@@ -6,5 +6,8 @@
   vars:
     packages:
     - openssh
+    - ufw
   tags:
-    - dehydrated
+    - openssh
+    - packages
+    - ufw
