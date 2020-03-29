@@ -10,7 +10,7 @@
 
 - name: Ensure sshd is up and running
   service:
-    name: ssh
+    name: sshd
     state: started
   tags:
     - ssh
