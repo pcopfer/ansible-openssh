@@ -1,2 +1,13 @@
 ---
-# tasks file for ansible-sshd
+- include: packages.yml
+  become: true
+
+- include: config.yml
+  become: true
+
+- include: keys.yml
+  when: openssh_ssh_users is defined
+  become: true
+
+- include: ufw.yml
+  become: true

@@ -1,0 +1,10 @@
+---
+- name: Install ssh keys
+  authorized_key:
+    user: "{{ item.name }}"
+    key: "{{ item.pubkey }}"
+    state: present
+  with_items: "{{ openssh_ssh_users }}"
+  tags:
+    - users
+    - ssh

@@ -1,0 +1,9 @@
+---
+- name: Allow ssh
+  ufw:
+    rule: allow
+    name: "Openssh"
+    delete: "{% if ufw_ssh_public %}no{% else %}yes{% endif %}"
+  tags:
+    - ufw
+    - ssh

@@ -1,2 +1,5 @@
 ---
 # defaults file for ansible-sshd
+
+ufw_ssh_public: true
+openssh_sshd_port: 22
