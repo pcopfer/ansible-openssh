@@ -1,4 +1,18 @@
 ---
+- name: Deploy sshd config
+  template:
+    src: openssh-server.j2
+    dest: /etc/ufw/applications.d/openssh-server
+  tags:
+    - ssh
+    - ufw
+
+- name: Ufw reload openssh profile
+  command: ufw app update openssh
+  tags:
+    - ssh
+    - ufw
+
 - name: Allow ssh
   ufw:
     rule: allow
