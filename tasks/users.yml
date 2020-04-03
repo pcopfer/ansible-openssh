@@ -1,0 +1,18 @@
+---
+- name: Add user if not exist
+  user:
+    name: "{{ item.name }}"
+  with_items: "{{ openssh_ssh_users }}"
+  tags:
+    - users
+    - ssh
+
+- name: Add user if not exist for password login
+  user:
+    name: "{{ item.name }}"
+    passwd: "{{ item.password }}"
+  with_items: "{{ openssh_ssh_users_password }}"
+  when: openssh_ssh_users_password is defined
+  tags:
+    - users
+    - ssh

@@ -6,6 +6,9 @@
 
 - include: config.yml
 
+- include: users.yml
+  when: openssh_ssh_users is defined or openssh_ssh_users_password is defined
+
 - include: keys.yml
   when: openssh_ssh_users is defined
 

@@ -5,7 +5,7 @@ Port {{ openssh_sshd_port }}
 
 HostKey /etc/ssh/ssh_host_ed25519_key
 HostKey /etc/ssh/ssh_host_rsa_key
-HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey	/etc/ssh/ssh_host_ecdsa_key
 AuthorizedKeysFile	.ssh/authorized_keys
 
 AuthenticationMethods publickey
@@ -28,4 +28,11 @@ Subsystem sftp internal-sftp
 {% if openssh_ssh_users is defined %}
 # Allow only specified users for ssh login
 AllowUsers {% for ssh_user in openssh_ssh_users %}{{ ssh_user.name }} {% endfor %}
+{% endif %}
+
+{% if openssh_ssh_users_password is defined %}
+# Allow specified users to login with password
+match User {% for user in openssh_ssh_users_password %}{{ user }} {% endfor %}
+  PasswordAuthentication yes
+Match all
 {% endif %}
