@@ -11,6 +11,7 @@
   user:
     name: "{{ item.name }}"
     passwd: "{{ item.password }}"
+    update_password: on_create
   with_items: "{{ openssh_ssh_users_password }}"
   when: openssh_ssh_users_password is defined
   tags:
