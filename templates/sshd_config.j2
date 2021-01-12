@@ -33,6 +33,7 @@ AllowUsers {% for ssh_user in openssh_ssh_users %}{{ ssh_user.name }} {% endfor 
 {% if openssh_ssh_users_password is defined %}
 # Allow specified users to login with password
 match User {% for user in openssh_ssh_users_password %}{{ user.name }} {% endfor %} 
+  AuthenticationMethods publickey password
   PasswordAuthentication yes
 Match all
 {% endif %}
