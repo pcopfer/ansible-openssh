@@ -25,9 +25,9 @@ ClientAliveCountMax 3
 
 Subsystem sftp internal-sftp
 
-{% if openssh_ssh_users is defined %}
+{% if openssh_ssh_users is defined or openssh_ssh_users_password is defined %}
 # Allow only specified users for ssh login
-AllowUsers {% for ssh_user in openssh_ssh_users %}{{ ssh_user.name }} {% endfor %} 
+AllowUsers {% if openssh_ssh_users is defined %}{% for ssh_user in openssh_ssh_users %}{{ ssh_user.name }} {% endfor %}{% endif %}{% if openssh_ssh_users_password is defined %}{% for ssh_user in openssh_ssh_users_password %}{{ ssh_user.name }} {% endfor %}{% endif %}
 {% endif %}
 
 {% if openssh_ssh_users_password is defined %}
